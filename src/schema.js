@@ -4,15 +4,20 @@ export default yup.object().shape({
     name: yup
     .string()
     .required("You must enter a name")
-    .min(2, "Name must be at least 2 chars long"),
-    size: yup
+    .min(3, "Name must be at least 2 chars long"),
+    portion: yup
     .string()
     .oneOf(["small", "medium", "large"], "Size is required"),
+    instructions: yup
+    .string()
+    .notRequired(),
 
-    topping1: yup.boolean(),
-    topping2: yup.boolean(),
-    topping3: yup.boolean(),
-    topping4: yup.boolean(),
-    topping5: yup.boolean(),
-    topping6: yup.boolean()
+    topping1: yup
+    .boolean()
+    .notRequired(),
+    topping2: yup.boolean().notRequired(),
+    topping3: yup.boolean().notRequired(),
+    topping4: yup.boolean().notRequired(),
+    topping5: yup.boolean().notRequired(),
+    topping6: yup.boolean().notRequired()
 })

@@ -3,27 +3,34 @@ import styled from 'styled-components';
 import { Route, Switch, Link } from 'react-router-dom';
 
 export default function Form(props){
-    const { change, values } = props;
+    const { change, values, disabled, submit, errors } = props;
+
+    const onSubmit = evt => {
+        evt.preventDefault();
+        submit();
+    }
 
     const onChange = evt => {
-        // const { name, value, type, checked } = evt.target;
-        // const correctValue = type === "checkbox" ? checked : value;
-        // change(name, correctValue);
+        const { name, value, type, checked } = evt.target;
+        const correctValue = type === "checkbox" ? checked : value;
+        change(name, correctValue);
     }
 
     return(
         <div>
+            <div>{errors.name}</div>
+            <div>{errors.size}</div>
+            <div>{errors.instructions}</div>
             <SplashImg>
                 <div>Build Your Own Pizza</div>
             </SplashImg>
             <div>
-                <form>
+                <form onSubmit={onSubmit}>
                     <label>Enter Your Name: 
-                    <br />
                         <input
                         type="text"
                         name="name"
-                        value=""
+                        value={values.custname}
                         onChange={onChange}
                         >
 
@@ -32,11 +39,11 @@ export default function Form(props){
                     </label>
                     <label>Pick a size: 
                         <br />
-                        <select>
+                        <select onChange={onChange} value={values.size} name="portion">
                             <option value="">- Pick a Size -</option>
-                            <option name="size" value="small">Small (10")</option>
-                            <option name="size" value="medium">Medium (14")</option>
-                            <option name="size" value="large">Large (18")</option>
+                            <option value="small">Small (10")</option>
+                            <option value="medium">Medium (14")</option>
+                            <option value="large">Large (18")</option>
                         </select>
                         <br />
                     </label>
@@ -51,8 +58,14 @@ export default function Form(props){
                         <br />
                     </label>
                     <label>Special Instructions:
-                        <input type="text" name="instructions" value="" onChange={onChange} ></input>
+                        <input
+                        type="text"
+                        name="instructions"
+                        value={values.instructions}
+                        onChange={onChange} />
+                        <br />
                     </label>
+                    <button>Submit Order</button>
                 </form>
             </div>
         </div>

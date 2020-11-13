@@ -5,7 +5,6 @@ import schema from './schema';
 import Header from './Header';
 import Home from './Home';
 import Form from './Form';
-import { values } from "cypress/types/lodash";
 
 const initialValues = {
   name: "",
@@ -16,18 +15,21 @@ const initialValues = {
   topping4: false,
   topping5: false,
   topping6: false,
-  instruction: ""
+  instructions: ""
 };
 
 const initialFormErrors = {
   name: "",
   size: "",
-  instruction: ""
 }
 
+const initialDisabled = true;
+
 const App = () => {
-  const [order, setOrder] = useState(initialValues);
+  const [order, setOrder] = useState([]);
+  const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [disabled, setDisabled] = useState(initialDisabled);
 
   const inputChange = (name, value) => {
     yup
@@ -45,18 +47,39 @@ const App = () => {
         [name]: err.errors[0],
       });
     });
-    setOrder({
-      ...order,
+    setFormValues({
+      ...formValues,
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
+
+  const formSubmit = () => {
+    const newOrder = {
+      name: formValues.name,
+      size: formValues.size,
+      instructions: formValues.instructions
+    };
+    setOrder(newOrder);
+  }
 
   return (
     <>
     <Header />
     <Switch>
       <Route path="/pizza">
-        <Form values={order} change={inputChange}/>
+        <Form
+        values={formValues}
+        change={inputChange}
+        disabled={disabled}
+        errors={formErrors}
+        submit={formSubmit}
+        />
       </Route>
 
       <Route path="/">

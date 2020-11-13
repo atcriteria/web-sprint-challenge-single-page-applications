@@ -8,7 +8,7 @@ import Form from './Form';
 
 const initialValues = {
   name: "",
-  size: "",
+  portion: "",
   topping1: false,
   topping2: false,
   topping3: false,
@@ -20,7 +20,7 @@ const initialValues = {
 
 const initialFormErrors = {
   name: "",
-  size: "",
+  portion: "",
 }
 
 const initialDisabled = true;
@@ -62,8 +62,14 @@ const App = () => {
   const formSubmit = () => {
     const newOrder = {
       name: formValues.name,
-      size: formValues.size,
-      instructions: formValues.instructions
+      portion: formValues.portion,
+      instructions: formValues.instructions,
+      topping1: formValues.topping1,
+      topping2: formValues.topping2,
+      topping3: formValues.topping3,
+      topping4: formValues.topping4,
+      topping5: formValues.topping5,
+      topping6: formValues.topping6,
     };
     setOrder(newOrder);
   }

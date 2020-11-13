@@ -65,7 +65,7 @@ export default function Form(props){
                         onChange={onChange} />
                         <br />
                     </label>
-                    <button>Submit Order</button>
+                    <button disabled={disabled}>Submit Order</button>
                 </form>
             </div>
         </div>

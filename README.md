@@ -31,8 +31,11 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+   useRouteMatch is used to ensure the route specified matches the actual route produced that way SPA's can operate correctly without having to actually reload the page.
 1. How would you explain form validation to someone who has never programmed before?
+   Form Validation is used to ensure that the data being entered on the form is the same type of data you expect it to be, numbers are numbers, names are text, passwords are complex, etc.
 1. In 1-2 sentences, define end to end testing.
+   End to end testing is a way for developers to quickly set up tests that test the functionality of an application from one end to the last.
 
 ## Instructions
 
@@ -43,7 +46,7 @@ Demonstrate your understanding of this week's concepts by answering the followin
 - [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
 - [x] Create a new branch: `git checkout -b <firstName-lastName>`
 - [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [] Push commits: `git push origin <firstName-lastName>`
+- [x] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 
@@ -62,9 +65,9 @@ Your finished project must include all of the following requirements:
 
 Implement the following tests in Cypress:
 
-- [ ] test that you can add text to the box
-- [ ] test that you can select multiple toppings
-- [ ] test that you can submit the form
+- [x] test that you can add text to the box
+- [x] test that you can select multiple toppings
+- [x] test that you can submit the form
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
